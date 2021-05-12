@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+input {
+  height: 30px;
+  margin: 5px;
+}
+
+select {
+  height: 36px;
+}

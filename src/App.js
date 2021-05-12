@@ -7,14 +7,15 @@ function App() {
   const [time, setTime] = useState(0);
   const [gender, setGender] = useState("male");
   const [alcohol, setAlcohol] = useState(0);
+  const [alcoholprosent, setAlcoholprosent] = useState(4.5);
 
   const [beerLitres, setBeerLitres] = useState(0.33);
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(a) {
+    a.preventDefault();
     let result = 0;
     let litres = bottles * beerLitres;
-    let grams = litres * 8 * 4.5;
+    let grams = litres * 8 * alcoholprosent;
     let burning = weight / 10;
     let leftover = grams - burning * time;
 
@@ -38,29 +39,41 @@ function App() {
             type="number"
             step="1"
             placeholder={weight}
-            onChange={(e) => setWeight(e.target.value)}
+            onChange={(a) => setWeight(a.target.value)}
           ></input>
         </div>
 
-        <div className="form">
-          <label>Øl 4.5 vol:</label>
+        <div className="form" id="a">
+          <label>Øl:</label>
           <input
             className="form-control"
             name="bottles"
             type="number"
             step="1"
             value={bottles}
-            onChange={(e) => setBottles(e.target.value)}
+            onChange={(a) => setBottles(a.target.value)}
           ></input>
           <select
             name="testname"
             id="testid"
-            onChange={(e) => setBeerLitres(e.target.value)}
+            onChange={(a) => setBeerLitres(a.target.value)}
           >
             <option value="0.33">0.33</option>
             <option value="0.5">0.5</option>
             <option value="0.275">0.275</option>
           </select>
+          <input
+            className="form-control"
+            name="alcoholprosent"
+            type="number"
+            value={alcoholprosent}
+            ng-model="model.field"
+            step="0.5"
+            min="0"
+            max="100"
+            ng-step="0.1"
+            onChange={(a) => setAlcoholprosent(a.target.value)}
+          ></input>
         </div>
 
         <div className="form">
@@ -71,7 +84,7 @@ function App() {
             type="number"
             step="1"
             value={time}
-            onChange={(e) => setTime(e.target.value)}
+            onChange={(a) => setTime(a.target.value)}
           ></input>
         </div>
 
@@ -83,7 +96,7 @@ function App() {
             type="radio"
             value="male"
             defaultChecked
-            onChange={(e) => setGender(e.target.value)}
+            onChange={(a) => setGender(a.target.value)}
           ></input>
           <label>Male</label>
           <input
@@ -91,7 +104,7 @@ function App() {
             name="gender"
             type="radio"
             value="female"
-            onChange={(e) => setGender(e.target.value)}
+            onChange={(a) => setGender(a.target.value)}
           ></input>
           <label>Female</label>
         </div>
