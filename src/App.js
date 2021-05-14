@@ -3,19 +3,33 @@ import { useState } from "react";
 
 function App() {
   const [weight, setWeight] = useState(80);
-  const [bottles, setBottles] = useState(1);
   const [time, setTime] = useState(0);
   const [gender, setGender] = useState("male");
   const [alcohol, setAlcohol] = useState(0);
-  const [alcoholprosent, setAlcoholprosent] = useState(4.5);
 
+  const [beerBottles, setBeerBottles] = useState(1);
+  const [BeerAlcoholProsent, setBeerAlcoholProsent] = useState(4.5);
   const [beerLitres, setBeerLitres] = useState(0.33);
+
+  const [vinBottles, setVinBottles] = useState(0);
+  const [VinAlcoholProsent, setVinAlcoholProsent] = useState(12.5);
+  const [vinLitres, setVinLitres] = useState(0.14);
+
+  const [brennevinBottles, setBrennevinBottles] = useState(0);
+  const [BrennevinAlcoholProsent, setBrennevinAlcoholProsent] = useState(40);
+  const [brennevinLitres, setBrennevinLitres] = useState(0.04);
 
   function handleSubmit(a) {
     a.preventDefault();
     let result = 0;
-    let litres = bottles * beerLitres;
-    let grams = litres * 8 * alcoholprosent;
+
+    let beer = beerBottles * beerLitres * 8 * BeerAlcoholProsent;
+    let vin = vinBottles * vinLitres * 8 * VinAlcoholProsent;
+    let brennevin =
+      brennevinBottles * brennevinLitres * 8 * BrennevinAlcoholProsent;
+
+    let grams = beer + vin + brennevin;
+
     let burning = weight / 10;
     let leftover = grams - burning * time;
 
@@ -50,8 +64,8 @@ function App() {
             name="bottles"
             type="number"
             step="1"
-            value={bottles}
-            onChange={(a) => setBottles(a.target.value)}
+            value={beerBottles}
+            onChange={(a) => setBeerBottles(a.target.value)}
           ></input>
           <select
             name="testname"
@@ -64,15 +78,81 @@ function App() {
           </select>
           <input
             className="form-control"
-            name="alcoholprosent"
+            name="BeerAlcoholProsent"
             type="number"
-            value={alcoholprosent}
+            value={BeerAlcoholProsent}
             ng-model="model.field"
             step="0.5"
             min="0"
             max="100"
             ng-step="0.1"
-            onChange={(a) => setAlcoholprosent(a.target.value)}
+            onChange={(a) => setBeerAlcoholProsent(a.target.value)}
+          ></input>
+        </div>
+
+        <div className="form" id="b">
+          <label>Vin:</label>
+          <input
+            className="form-control"
+            name="vin"
+            type="number"
+            step="1"
+            value={vinBottles}
+            onChange={(a) => setVinBottles(a.target.value)}
+          ></input>
+          <select
+            name="testname"
+            id="testid"
+            onChange={(a) => setVinLitres(a.target.value)}
+          >
+            <option value="0.14">0.14L</option>
+            <option value="0.75">0.75L</option>
+            <option value="1">1L</option>
+          </select>
+          <input
+            className="form-control"
+            name="VinAlcoholProsent"
+            type="number"
+            value={VinAlcoholProsent}
+            ng-model="model.field"
+            step="0.5"
+            min="0"
+            max="100"
+            ng-step="0.1"
+            onChange={(a) => setVinAlcoholProsent(a.target.value)}
+          ></input>
+        </div>
+
+        <div className="form" id="b">
+          <label>Brennevin:</label>
+          <input
+            className="form-control"
+            name="brennevin"
+            type="number"
+            step="1"
+            value={brennevinBottles}
+            onChange={(a) => setBrennevinBottles(a.target.value)}
+          ></input>
+          <select
+            name="testname"
+            id="testid"
+            onChange={(a) => setBrennevinLitres(a.target.value)}
+          >
+            <option value="0.04">0.04L</option>
+            <option value="0.06">0.06L</option>
+            <option value="0.08">0.08L</option>
+          </select>
+          <input
+            className="form-control"
+            name="BrennevinAlcoholProsent"
+            type="number"
+            value={BrennevinAlcoholProsent}
+            ng-model="model.field"
+            step="0.5"
+            min="0"
+            max="100"
+            ng-step="0.1"
+            onChange={(a) => setBrennevinAlcoholProsent(a.target.value)}
           ></input>
         </div>
 
