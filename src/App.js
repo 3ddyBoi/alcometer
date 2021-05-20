@@ -43,7 +43,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Promillekalkulator</h1>
+      <h1>Death trip alkometer</h1>
       <form onSubmit={handleSubmit}>
         <div className="form">
           <label>Vekt:</label>
@@ -157,7 +157,7 @@ function App() {
         </div>
 
         <div className="form">
-          <label>Time:</label>
+          <label>Timer siden du inntok alkohol:</label>
           <input
             className="form-control"
             name="time"
@@ -169,7 +169,7 @@ function App() {
         </div>
 
         <div className="form">
-          <label>Gender:</label>
+          <label>Kjønn:</label>
           <input
             className="form-control"
             name="gender"
@@ -178,7 +178,7 @@ function App() {
             defaultChecked
             onChange={(a) => setGender(a.target.value)}
           ></input>
-          <label>Male</label>
+          <label>Mann</label>
           <input
             className="form-control"
             name="gender"
@@ -186,15 +186,14 @@ function App() {
             value="female"
             onChange={(a) => setGender(a.target.value)}
           ></input>
-          <label>Female</label>
+          <label>Kvinne</label>
         </div>
 
-        <button>Calculate</button>
+        <button>Kalkuler</button>
 
         <div className="form">
           <output>
-            {" "}
-            <h4>{alcohol.toFixed(2)}</h4>
+            <h4>Din promille er rundt:</h4> <h4>{alcohol.toFixed(2)}</h4>
           </output>
         </div>
       </form>
