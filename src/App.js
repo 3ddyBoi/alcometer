@@ -1,4 +1,6 @@
 import "./App.css";
+import deathtrip_logo from "./deathtrip-logo.png";
+import ung_i_trafikken_logo from "./ungitrafikken_color_normal.png";
 import { useState } from "react";
 
 function App() {
@@ -197,6 +199,22 @@ function App() {
           </output>
         </div>
       </form>
+      <div className="logoer">
+        <a href="https://ungitrafikken.no/deathtrip/" target="blank">
+          <img
+            className="deathtrip_logo"
+            src={deathtrip_logo}
+            alt="logoen til deathtrip"
+          />
+        </a>
+        <a href="https://ungitrafikken.no/" target="blank">
+          <img
+            className="ung_i_trafikken_logo"
+            src={ung_i_trafikken_logo}
+            alt="logoen til ung i trafikken"
+          />
+        </a>
+      </div>
     </div>
   );
 }
